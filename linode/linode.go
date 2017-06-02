@@ -6,7 +6,6 @@ import (
 	"errors"
 
 	"github.com/mholt/caddy/caddytls"
-	"github.com/xenolf/lego/acme"
 	"github.com/xenolf/lego/providers/dns/linode"
 )
 
@@ -19,7 +18,7 @@ func init() {
 //
 // len(0): use credentials from environment
 // len(1): credentials[0] = access token (API key)
-func NewDNSProvider(credentials ...string) (acme.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return linode.NewDNSProvider()

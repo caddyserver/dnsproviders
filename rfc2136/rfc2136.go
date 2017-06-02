@@ -6,7 +6,6 @@ import (
 	"errors"
 
 	"github.com/mholt/caddy/caddytls"
-	"github.com/xenolf/lego/acme"
 	"github.com/xenolf/lego/providers/dns/rfc2136"
 )
 
@@ -22,7 +21,7 @@ func init() {
 //         credentials[1] = TSIG algorithm
 //         credentials[2] = TSIG key
 //         credentials[3] = TSIG secret
-func NewDNSProvider(credentials ...string) (acme.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return rfc2136.NewDNSProvider()
