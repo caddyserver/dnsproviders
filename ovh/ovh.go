@@ -6,7 +6,6 @@ import (
 	"errors"
 
 	"github.com/mholt/caddy/caddytls"
-	"github.com/xenolf/lego/acme"
 	"github.com/xenolf/lego/providers/dns/ovh"
 )
 
@@ -22,7 +21,7 @@ func init() {
 //         credentials[1] = Application Key
 //         credentials[2] = Application Secret
 //         credentials[3] = Consumer Key
-func NewDNSProvider(credentials ...string) (acme.ChallengeProvider, error) {
+func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return ovh.NewDNSProvider()
