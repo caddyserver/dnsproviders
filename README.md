@@ -15,7 +15,7 @@ tls {
 }
 ```
 
-Credentials for your DNS provier should be set in environment variables. See [the docs for your provider](https://godoc.org/github.com/xenolf/lego/providers/dns) for more information.
+Credentials for your DNS provider should be set in environment variables. This information is in the [Automatic HTTPS](https://caddyserver.com/docs/automatic-https#dns-challenge) page of the Caddy documentation. For more information about using your DNS provider, see [the docs for your provider](https://godoc.org/github.com/xenolf/lego/providers/dns) directly.
 
 If you specify a DNS provider, the DNS challenge will be used exclusively; other challenge types will be disabled. Be aware that some DNS providers may be slow in applying changes.
 
