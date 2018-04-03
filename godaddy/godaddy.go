@@ -23,7 +23,7 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return godaddy.NewDNSProvider()
-	case 3:
+	case 2:
 		return godaddy.NewDNSProviderCredentials(credentials[0], credentials[1])
 	default:
 		return nil, errors.New("invalid credentials length")
