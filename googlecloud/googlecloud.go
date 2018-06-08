@@ -6,7 +6,7 @@ import (
 	"errors"
 
 	"github.com/mholt/caddy/caddytls"
-	"github.com/xenolf/lego/providers/dns/googlecloud"
+	"github.com/xenolf/lego/providers/dns/gcloud"
 )
 
 func init() {
@@ -21,9 +21,9 @@ func init() {
 func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
-		return googlecloud.NewDNSProvider()
+		return gcloud.NewDNSProvider()
 	case 1:
-		return googlecloud.NewDNSProviderCredentials(credentials[0])
+		return gcloud.NewDNSProviderCredentials(credentials[0])
 	default:
 		return nil, errors.New("invalid credentials length")
 	}
