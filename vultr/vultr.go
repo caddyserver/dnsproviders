@@ -23,7 +23,9 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return vultr.NewDNSProvider()
 	case 1:
-		return vultr.NewDNSProviderCredentials(credentials[0])
+		config := vultr.NewDefaultConfig()
+		config.APIKey = credentials[0]
+		return vultr.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

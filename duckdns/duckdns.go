@@ -23,7 +23,9 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return duckdns.NewDNSProvider()
 	case 1:
-		return duckdns.NewDNSProviderCredentials(credentials[0])
+		config := duckdns.NewDefaultConfig()
+		config.Token = credentials[0]
+		return duckdns.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

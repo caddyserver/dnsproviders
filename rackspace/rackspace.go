@@ -24,7 +24,10 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return rackspace.NewDNSProvider()
 	case 2:
-		return rackspace.NewDNSProviderCredentials(credentials[0], credentials[1])
+		config := rackspace.NewDefaultConfig()
+		config.APIUser = credentials[0]
+		config.APIKey = credentials[1]
+		return rackspace.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

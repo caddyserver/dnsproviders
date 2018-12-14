@@ -24,7 +24,10 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return exoscale.NewDNSProvider()
 	case 2:
-		return exoscale.NewDNSProviderClient(credentials[0], credentials[1], "")
+		config := exoscale.NewDefaultConfig()
+		config.APIKey = credentials[0]
+		config.APISecret = credentials[1]
+		return exoscale.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

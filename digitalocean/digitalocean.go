@@ -23,7 +23,9 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return digitalocean.NewDNSProvider()
 	case 1:
-		return digitalocean.NewDNSProviderCredentials(credentials[0])
+		config := digitalocean.NewDefaultConfig()
+		config.AuthToken = credentials[0]
+		return digitalocean.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

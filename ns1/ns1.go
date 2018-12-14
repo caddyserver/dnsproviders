@@ -16,13 +16,14 @@ func init() {
 //
 // len(0): use credentials from environment
 // len(1): credentials[0] = API key
-
 func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:
 		return ns1.NewDNSProvider()
 	case 1:
-		return ns1.NewDNSProviderCredentials(credentials[0])
+		config := ns1.NewDefaultConfig()
+		config.APIKey = credentials[0]
+		return ns1.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

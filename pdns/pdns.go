@@ -24,11 +24,14 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return pdns.NewDNSProvider()
 	case 2:
-		url, err := url.Parse(credentials[0])
+		var err error
+		config := pdns.NewDefaultConfig()
+		config.Host, err = url.Parse(credentials[0])
 		if err != nil {
-			return nil, errors.New("Invalid URL format")
+			return nil, errors.New("invalid URL format")
 		}
-		return pdns.NewDNSProviderCredentials(url, credentials[1])
+		config.APIKey = credentials[1]
+		return pdns.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

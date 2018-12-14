@@ -25,7 +25,11 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return auroradns.NewDNSProvider()
 	case 3:
-		return auroradns.NewDNSProviderCredentials(credentials[0], credentials[1], credentials[2])
+		config := auroradns.NewDefaultConfig()
+		config.BaseURL = credentials[0]
+		config.UserID = credentials[1]
+		config.Key = credentials[2]
+		return auroradns.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

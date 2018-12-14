@@ -23,13 +23,18 @@ func init() {
 //         credentials[1] = API token
 //         credentials[2] = Server
 func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+	config := namedotcom.NewDefaultConfig()
+
 	switch len(credentials) {
 	case 0:
 		return namedotcom.NewDNSProvider()
-	case 2:
-		return namedotcom.NewDNSProviderCredentials(credentials[0], credentials[1], "")
 	case 3:
-		return namedotcom.NewDNSProviderCredentials(credentials[0], credentials[1], credentials[2])
+		config.Server = credentials[2]
+		fallthrough
+	case 2:
+		config.Username = credentials[0]
+		config.APIToken = credentials[1]
+		return namedotcom.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

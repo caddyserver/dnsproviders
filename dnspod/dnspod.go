@@ -23,7 +23,9 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return dnspod.NewDNSProvider()
 	case 1:
-		return dnspod.NewDNSProviderCredentials(credentials[0])
+		config := dnspod.NewDefaultConfig()
+		config.LoginToken = credentials[0]
+		return dnspod.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

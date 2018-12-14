@@ -25,7 +25,11 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return dnsmadeeasy.NewDNSProvider()
 	case 3:
-		return dnsmadeeasy.NewDNSProviderCredentials(credentials[0], credentials[1], credentials[2])
+		config := dnsmadeeasy.NewDefaultConfig()
+		config.BaseURL = credentials[0]
+		config.APIKey = credentials[1]
+		config.APISecret = credentials[2]
+		return dnsmadeeasy.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

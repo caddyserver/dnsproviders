@@ -25,7 +25,11 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return dyn.NewDNSProvider()
 	case 3:
-		return dyn.NewDNSProviderCredentials(credentials[0], credentials[1], credentials[2])
+		config := dyn.NewDefaultConfig()
+		config.CustomerName = credentials[0]
+		config.UserName = credentials[1]
+		config.Password = credentials[2]
+		return dyn.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

@@ -24,7 +24,10 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return glesys.NewDNSProvider()
 	case 2:
-		return glesys.NewDNSProviderCredentials(credentials[0], credentials[1])
+		config := glesys.NewDefaultConfig()
+		config.APIUser = credentials[0]
+		config.APIKey = credentials[1]
+		return glesys.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

@@ -24,7 +24,10 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return godaddy.NewDNSProvider()
 	case 2:
-		return godaddy.NewDNSProviderCredentials(credentials[0], credentials[1])
+		config := godaddy.NewDefaultConfig()
+		config.APIKey = credentials[0]
+		config.APISecret = credentials[1]
+		return godaddy.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

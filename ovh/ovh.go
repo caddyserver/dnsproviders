@@ -26,7 +26,12 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return ovh.NewDNSProvider()
 	case 4:
-		return ovh.NewDNSProviderCredentials(credentials[0], credentials[1], credentials[2], credentials[3])
+		config := ovh.NewDefaultConfig()
+		config.APIEndpoint = credentials[0]
+		config.ApplicationKey = credentials[1]
+		config.ApplicationSecret = credentials[2]
+		config.ConsumerKey = credentials[3]
+		return ovh.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

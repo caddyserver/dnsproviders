@@ -23,7 +23,9 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return gandi.NewDNSProvider()
 	case 1:
-		return gandi.NewDNSProviderCredentials(credentials[0])
+		config := gandi.NewDefaultConfig()
+		config.APIKey = credentials[0]
+		return gandi.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

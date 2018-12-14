@@ -23,7 +23,9 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return linode.NewDNSProvider()
 	case 1:
-		return linode.NewDNSProviderCredentials(credentials[0])
+		config := linode.NewDefaultConfig()
+		config.APIKey = credentials[0]
+		return linode.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

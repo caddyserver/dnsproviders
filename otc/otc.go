@@ -27,7 +27,13 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return otc.NewDNSProvider()
 	case 5:
-		return otc.NewDNSProviderCredentials(credentials[0], credentials[1], credentials[2], credentials[3], credentials[4])
+		config := otc.NewDefaultConfig()
+		config.DomainName = credentials[0]
+		config.UserName = credentials[1]
+		config.Password = credentials[2]
+		config.ProjectName = credentials[3]
+		config.IdentityEndpoint = credentials[4]
+		return otc.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

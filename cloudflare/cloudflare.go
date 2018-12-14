@@ -24,7 +24,10 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return cloudflare.NewDNSProvider()
 	case 2:
-		return cloudflare.NewDNSProviderCredentials(credentials[0], credentials[1])
+		config := cloudflare.NewDefaultConfig()
+		config.AuthEmail = credentials[0]
+		config.AuthKey = credentials[1]
+		return cloudflare.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

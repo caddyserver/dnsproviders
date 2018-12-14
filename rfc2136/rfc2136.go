@@ -4,6 +4,7 @@ package rfc2136
 
 import (
 	"errors"
+	"time"
 
 	"github.com/mholt/caddy/caddytls"
 	"github.com/xenolf/lego/providers/dns/rfc2136"
@@ -28,13 +29,26 @@ func init() {
 //         credentials[3] = TSIG secret
 //         credentials[4] = DNS propagation timeout
 func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
+	var timeout time.Duration
+
 	switch len(credentials) {
 	case 0:
 		return rfc2136.NewDNSProvider()
-	case 4:
-		return rfc2136.NewDNSProviderCredentials(credentials[0], credentials[1], credentials[2], credentials[3], "")
 	case 5:
-		return rfc2136.NewDNSProviderCredentials(credentials[0], credentials[1], credentials[2], credentials[3], credentials[4])
+		var err error
+		timeout, err = time.ParseDuration(credentials[4])
+		if err != nil {
+			return nil, errors.New("invalid DNS propagation timeout")
+		}
+		fallthrough
+	case 4:
+		config := rfc2136.NewDefaultConfig()
+		config.Nameserver = credentials[0]
+		config.TSIGAlgorithm = credentials[1]
+		config.TSIGKey = credentials[2]
+		config.TSIGSecret = credentials[3]
+		config.PropagationTimeout = timeout
+		return rfc2136.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

@@ -26,7 +26,12 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return fastdns.NewDNSProvider()
 	case 4:
-		return fastdns.NewDNSProviderClient(credentials[0], credentials[1], credentials[2], credentials[3])
+		config := fastdns.NewDefaultConfig()
+		config.Config.Host = credentials[0]
+		config.Config.ClientToken = credentials[1]
+		config.Config.ClientSecret = credentials[2]
+		config.Config.AccessToken = credentials[3]
+		return fastdns.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}

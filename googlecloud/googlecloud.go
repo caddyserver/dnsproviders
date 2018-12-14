@@ -23,7 +23,9 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	case 0:
 		return gcloud.NewDNSProvider()
 	case 1:
-		return gcloud.NewDNSProviderCredentials(credentials[0])
+		config := gcloud.NewDefaultConfig()
+		config.Project = credentials[0]
+		return gcloud.NewDNSProviderConfig(config)
 	default:
 		return nil, errors.New("invalid credentials length")
 	}
