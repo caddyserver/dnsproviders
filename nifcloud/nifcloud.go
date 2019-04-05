@@ -6,7 +6,7 @@ import (
 	"errors"
 
 	"github.com/mholt/caddy/caddytls"
-	"github.com/xenolf/lego/providers/dns/nifcloud"
+	"github.com/go-acme/lego/providers/dns/nifcloud"
 )
 
 func init() {
@@ -16,7 +16,7 @@ func init() {
 // NewDNSProvider returns a new NIFCLOUD DNS challenge provider.
 // The credentials are interpreted as follows:
 //
-// len(0): use credentials from environment (https://godoc.org/github.com/xenolf/lego/providers/dns/nifcloud)
+// len(0): use credentials from environment (https://godoc.org/github.com/go-acme/lego/providers/dns/nifcloud)
 // len(3): credentials[0] = Base URL
 //         credentials[1] = ACCESS KEY ID
 //         credentials[2] = SECRET ACCESS KEY

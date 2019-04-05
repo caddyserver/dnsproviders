@@ -4,7 +4,7 @@ import (
 	"errors"
 
 	"github.com/mholt/caddy/caddytls"
-	"github.com/xenolf/lego/providers/dns/stackpath"
+	"github.com/go-acme/lego/providers/dns/stackpath"
 )
 
 func init() {

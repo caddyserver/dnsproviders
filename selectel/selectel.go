@@ -6,7 +6,7 @@ import (
 	"errors"
 
 	"github.com/mholt/caddy/caddytls"
-	"github.com/xenolf/lego/providers/dns/selectel"
+	"github.com/go-acme/lego/providers/dns/selectel"
 )
 
 func init() {
@@ -16,7 +16,7 @@ func init() {
 // NewDNSProvider returns a new Selectel DNS challenge provider.
 // The credentials are interpreted as follows:
 //
-// len(0): use credentials from environment (https://godoc.org/github.com/xenolf/lego/providers/dns/selectel)
+// len(0): use credentials from environment (https://godoc.org/github.com/go-acme/lego/providers/dns/selectel)
 // len(1): credentials[0] = Token
 func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	switch len(credentials) {

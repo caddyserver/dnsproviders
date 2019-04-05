@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/mholt/caddy/caddytls"
-	"github.com/xenolf/lego/providers/dns/rfc2136"
+	"github.com/go-acme/lego/providers/dns/rfc2136"
 )
 
 func init() {
@@ -22,7 +22,7 @@ func init() {
 //         credentials[1] = TSIG algorithm
 //         credentials[2] = TSIG key
 //         credentials[3] = TSIG secret
-//         DNS propagation timeout uses default from github.com/xenolf/lego/providers/dns/rfc2136 (60s)
+//         DNS propagation timeout uses default from github.com/go-acme/lego/providers/dns/rfc2136 (60s)
 // len(5): credentials[0] = nameserver
 //         credentials[1] = TSIG algorithm
 //         credentials[2] = TSIG key

@@ -5,8 +5,8 @@ package route53
 import (
 	"errors"
 
+	"github.com/go-acme/lego/providers/dns/route53"
 	"github.com/mholt/caddy/caddytls"
-	"github.com/xenolf/lego/providers/dns/route53"
 )
 
 func init() {
@@ -16,7 +16,7 @@ func init() {
 // NewDNSProvider returns a new Route53 DNS challenge provider.
 // The credentials are detected automatically; see underlying
 // package docs for details:
-// https://godoc.org/github.com/xenolf/lego/providers/dns/route53
+// https://godoc.org/github.com/go-acme/lego/providers/dns/route53
 func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 	switch len(credentials) {
 	case 0:

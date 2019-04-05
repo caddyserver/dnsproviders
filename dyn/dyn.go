@@ -6,7 +6,7 @@ import (
 	"errors"
 
 	"github.com/mholt/caddy/caddytls"
-	"github.com/xenolf/lego/providers/dns/dyn"
+	"github.com/go-acme/lego/providers/dns/dyn"
 )
 
 func init() {
