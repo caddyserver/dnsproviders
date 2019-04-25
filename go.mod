@@ -11,7 +11,7 @@ require (
 	github.com/akamai/AkamaiOPEN-edgegrid-golang v0.7.4 // indirect
 	github.com/aws/aws-sdk-go v1.19.15 // indirect
 	github.com/cloudflare/cloudflare-go v0.8.5 // indirect
-	github.com/decker502/dnspod-go v0.2.0 // indirect
+	github.com/decker502/dnspod-go d1081970f5282a0571ac5a01b09a6fe2e720123b // indirect
 	github.com/dnsimple/dnsimple-go v0.23.0 // indirect
 	github.com/exoscale/egoscale v0.17.0 // indirect
 	github.com/go-acme/lego v2.5.0+incompatible
