@@ -27,6 +27,12 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 		return httpreq.NewDNSProvider()
 	case 4:
 		config := httpreq.NewDefaultConfig()
+
+		endpoint, err := url.Parse(credentials[0])
+		if err != nil {
+			return nil, errors.New("endpoint is not a valid URL")
+		}
+
 		config.Endpoint = credentials[0]
 		config.Mode = credentials[1]
 		config.Username = credentials[2]
