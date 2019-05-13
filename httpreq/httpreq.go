@@ -4,6 +4,7 @@ package httpreq
 
 import (
 	"errors"
+	"net/url"
 
 	"github.com/mholt/caddy/caddytls"
 	"github.com/go-acme/lego/providers/dns/httpreq"
@@ -33,7 +34,7 @@ func NewDNSProvider(credentials ...string) (caddytls.ChallengeProvider, error) {
 			return nil, errors.New("endpoint is not a valid URL")
 		}
 
-		config.Endpoint = credentials[0]
+		config.Endpoint = endpoint 
 		config.Mode = credentials[1]
 		config.Username = credentials[2]
 		config.Password = credentials[3]
