@@ -5,8 +5,8 @@ package route53
 import (
 	"errors"
 
+	"github.com/caddyserver/caddy/caddytls"
 	"github.com/go-acme/lego/providers/dns/route53"
-	"github.com/mholt/caddy/caddytls"
 )
 
 func init() {

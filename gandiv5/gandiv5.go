@@ -5,7 +5,7 @@ package gandiv5
 import (
 	"errors"
 
-	"github.com/mholt/caddy/caddytls"
+	"github.com/caddyserver/caddy/caddytls"
 	"github.com/go-acme/lego/providers/dns/gandiv5"
 )
 
