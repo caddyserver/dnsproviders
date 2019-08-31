@@ -11,7 +11,7 @@ import (
 
 func TestNewDNSProvider(t *testing.T) {
 	os.Setenv("STACKPATH_CLIENT_ID", "client-id-env")
-	os.Setenv("STACKPATh_CLIENT_SECRET", "client-idsecret-env")
+	os.Setenv("STACKPATH_CLIENT_SECRET", "client-idsecret-env")
 	os.Setenv("STACKPATH_STACK_ID", "stack-id-env")
 
 	tests := map[string]struct {
