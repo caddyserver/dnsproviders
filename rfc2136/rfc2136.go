@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/caddyserver/caddy/caddytls"
-	"github.com/go-acme/lego/providers/dns/rfc2136"
+	"github.com/go-acme/lego/v3/providers/dns/rfc2136"
 )
 
 func init() {

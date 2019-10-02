@@ -6,7 +6,7 @@ import (
 	"errors"
 
 	"github.com/caddyserver/caddy/caddytls"
-	"github.com/go-acme/lego/providers/dns/vscale"
+	"github.com/go-acme/lego/v3/providers/dns/vscale"
 )
 
 func init() {

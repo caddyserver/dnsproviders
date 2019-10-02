@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/caddyserver/caddy/caddytls"
-	"github.com/go-acme/lego/providers/dns/namesilo"
+	"github.com/go-acme/lego/v3/providers/dns/namesilo"
 )
 
 func init() {

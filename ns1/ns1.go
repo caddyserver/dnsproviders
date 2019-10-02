@@ -4,7 +4,7 @@ import (
 	"errors"
 
 	"github.com/caddyserver/caddy/caddytls"
-	"github.com/go-acme/lego/providers/dns/ns1"
+	"github.com/go-acme/lego/v3/providers/dns/ns1"
 )
 
 func init() {

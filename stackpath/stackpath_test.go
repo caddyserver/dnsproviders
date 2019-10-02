@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/go-acme/lego/providers/dns/stackpath"
+	"github.com/go-acme/lego/v3/providers/dns/stackpath"
 )
 
 func TestNewDNSProvider(t *testing.T) {
