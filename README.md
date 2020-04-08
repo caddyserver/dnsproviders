@@ -1,5 +1,7 @@
-DNS providers for Caddy
-=======================
+DNS providers for Caddy v1
+==========================
+
+**⚠️ For Caddy 1 only, which is obsoleted by Caddy 2.**
 
 These providers can be used to help solve the ACME DNS challenge by plugging them into Caddy 0.9 and newer:
 
