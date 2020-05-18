@@ -1,9 +1,26 @@
-DNS providers for Caddy v1
-==========================
+DNS providers for Caddy v1 (obsolete)
+=====================================
 
-**⚠️ For Caddy 1 only, which is obsoleted by Caddy 2.**
+**⚠️ This repo is for Caddy v1, which has been obsoleted by Caddy 2.**
 
-These providers can be used to help solve the ACME DNS challenge by plugging them into Caddy 0.9 and newer:
+[Caddy 2 also supports the DNS challenge](https://caddyserver.com/docs/automatic-https#dns-challenge) in a similar way to v1, but [using backwards-incompatible APIs](https://github.com/caddy-dns) that are much more flexible and easier to use. This repository is no longer relevant or maintained.
+
+Migrating to the new APIs is solely a community effort. [It is very easy to implement a provider](https://caddy.community/t/writing-new-dns-provider-modules-for-caddy/7786) if you know Go!
+
+**Version 2 resources:**
+
+- [How to use DNS providers in Caddy 2](https://caddy.community/t/how-to-use-dns-provider-modules-in-caddy-2/8148)
+- [Implementing a new DNS provider for Caddy 2](https://caddy.community/t/writing-new-dns-provider-modules-for-caddy/7786)
+- [libdns packages](https://github.com/libdns) (underlying provider implementations)
+- [caddy-dns packages](https://github.com/caddy-dns) (small wrappers over libdns providers that convert them into Caddy modules)
+- [Temporary module shim](https://github.com/caddy-dns/lego-deprecated) (supports all of lego's 75+ DNS providers)
+
+
+
+Old readme (for v1)
+===================
+
+These providers can be used to help solve the ACME DNS challenge by plugging them into Caddy 0.9-1.x:
 
 ```go
 import _ "github.com/caddyserver/dnsproviders/<provider>"
